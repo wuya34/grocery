@@ -1,13 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     android:gravity="center"
     tools:context="com.example.amyas.customwidget.MainActivity">
+
+    <com.baidu.mapapi.map.TextureMapView
+        android:id="@+id/bmapView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
+    </com.baidu.mapapi.map.TextureMapView>
+    <Button
+        android:id="@+id/resetLocation"
+        android:text="定位"
+        android:layout_alignParentEnd="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
 
     <!--<com.example.amyas.customwidget.TopBar-->
         <!--android:id="@+id/top_bar"-->
@@ -40,26 +51,26 @@
         <!--android:layout_width="match_parent"-->
         <!--android:layout_height="wrap_content"/>-->
 
-    <com.example.amyas.customwidget.MockScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-        <ImageView
-            android:layout_width="200dp"
-            android:scaleType="centerCrop"
-            android:src="@mipmap/dog1"
-            android:layout_height="200dp"/>
-        <ImageView
-            android:layout_width="200dp"
-            android:scaleType="centerCrop"
-            android:src="@mipmap/dog2"
-            android:layout_height="200dp"/>
-        <ImageView
-            android:layout_width="200dp"
-            android:scaleType="centerCrop"
-            android:src="@mipmap/dog3"
-            android:layout_height="200dp"/>
-    </com.example.amyas.customwidget.MockScrollView>
+    <!--<com.example.amyas.customwidget.MockScrollView-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="match_parent">-->
+        <!--<ImageView-->
+            <!--android:layout_width="200dp"-->
+            <!--android:scaleType="centerCrop"-->
+            <!--android:src="@mipmap/dog1"-->
+            <!--android:layout_height="200dp"/>-->
+        <!--<ImageView-->
+            <!--android:layout_width="200dp"-->
+            <!--android:scaleType="centerCrop"-->
+            <!--android:src="@mipmap/dog2"-->
+            <!--android:layout_height="200dp"/>-->
+        <!--<ImageView-->
+            <!--android:layout_width="200dp"-->
+            <!--android:scaleType="centerCrop"-->
+            <!--android:src="@mipmap/dog3"-->
+            <!--android:layout_height="200dp"/>-->
+    <!--</com.example.amyas.customwidget.MockScrollView>-->
 
 
 
-</LinearLayout>
+</RelativeLayout>
