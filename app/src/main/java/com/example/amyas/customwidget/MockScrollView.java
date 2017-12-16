@@ -65,10 +65,11 @@ public class MockScrollView extends ViewGroup {
 
     @Override
     public boolean onTouchEvent(MotionEvent event) {
+        System.out.println("onTouchEvent: get in here");
         int y = (int) event.getY();
         switch (event.getAction()){
             case MotionEvent.ACTION_DOWN:
-                System.out.println("get in on touch event down");
+//                System.out.println("get in on touch event down");
                 mStart = getScrollY();
                 mLastY = y;
                 break;
@@ -96,7 +97,7 @@ public class MockScrollView extends ViewGroup {
                 mLastY = y;
                 break;
             case MotionEvent.ACTION_UP:
-                System.out.println("get in on touch event up");
+//                System.out.println("get in on touch event up");
                 mEnd = getScrollY();
                 int travel = mEnd-mStart;
                 if (travel>0){

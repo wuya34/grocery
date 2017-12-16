@@ -1,16 +1,13 @@
-package com.example.amyas.customwidget;
+package com.example.amyas.customwidget.activity;
 
 import android.Manifest;
 import android.content.pm.PackageManager;
-import android.location.Location;
 import android.os.Build;
 import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.View;
-import android.widget.Button;
 
 import com.baidu.location.BDLocation;
 import com.baidu.location.BDLocationListener;
@@ -22,9 +19,7 @@ import com.baidu.mapapi.map.BitmapDescriptor;
 import com.baidu.mapapi.map.BitmapDescriptorFactory;
 import com.baidu.mapapi.map.MapPoi;
 import com.baidu.mapapi.map.MapStatus;
-import com.baidu.mapapi.map.MapStatusUpdate;
 import com.baidu.mapapi.map.MapStatusUpdateFactory;
-import com.baidu.mapapi.map.MapView;
 import com.baidu.mapapi.map.Marker;
 import com.baidu.mapapi.map.MarkerOptions;
 import com.baidu.mapapi.map.MyLocationConfiguration;
@@ -32,14 +27,17 @@ import com.baidu.mapapi.map.MyLocationData;
 import com.baidu.mapapi.map.OverlayOptions;
 import com.baidu.mapapi.map.TextureMapView;
 import com.baidu.mapapi.model.LatLng;
+import com.example.amyas.customwidget.R;
+import com.example.amyas.customwidget.ToastUtil;
 
+/**
+ * 百度地图方向指示最好采用传感器，获取位置间隔时间应为3-5秒
+ */
 public class MainActivity extends AppCompatActivity {
     public static final String TAG = "MainActivity";
     private TextureMapView mMapView;
     private BaiduMap mBaiduMap;
     private LocationClient mLocationClient;
-    private Marker mMarker;
-    private Button resetLocation;
     private BaiduLocationListener mListener = new BaiduLocationListener();
     private boolean isFirstLoc = true;
     private double mLatitude;
@@ -55,13 +53,6 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         SDKInitializer.initialize(getApplicationContext());
         setContentView(R.layout.activity_main);
-//        resetLocation = findViewById(R.id.resetLocation);
-//        resetLocation.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                showLocation();
-//            }
-//        });
         /**
          * 检查权限
          */
@@ -85,7 +76,7 @@ public class MainActivity extends AppCompatActivity {
         BitmapDescriptor bitmapDescriptor = BitmapDescriptorFactory
                 .fromResource(R.drawable.ic_direction_arrow);
         MyLocationConfiguration config = new MyLocationConfiguration(
-                MyLocationConfiguration.LocationMode.COMPASS, true, bitmapDescriptor);
+                MyLocationConfiguration.LocationMode.COMPASS, true, null);
         mBaiduMap.setMyLocationConfiguration(config);
     }
 
@@ -102,17 +93,10 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void requestContactsPermissions(){
-//        if (ActivityCompat.shouldShowRequestPermissionRationale(this, Manifest.permission.ACCESS_COARSE_LOCATION)||
-//                ActivityCompat.shouldShowRequestPermissionRationale(this, Manifest.permission.ACCESS_FINE_LOCATION)||
-//                ActivityCompat.shouldShowRequestPermissionRationale(this, Manifest.permission.WRITE_EXTERNAL_STORAGE)||
-//                ActivityCompat.shouldShowRequestPermissionRationale(this, Manifest.permission.READ_PHONE_STATE)){
-//            ActivityCompat.requestPermissions(this, PERMISSIONS_CONTACT, REQUEST_CONACTS);
-//        }else {
-//
-//        }
         ActivityCompat.requestPermissions(this, PERMISSIONS_CONTACT, REQUEST_CONACTS);
 
     }
+
 
     public static boolean verifyPermissions(int[] grantResults){
         for (int result: grantResults){
@@ -152,8 +136,8 @@ public class MainActivity extends AppCompatActivity {
         option.setCoorType("bd09ll");
         //设置定位间隔，默认为0，即只定位1次
         //此处设置定位请求的间隔大于等于10000ms
-        option.setScanSpan(10000);
-        option.setIgnoreKillProcess(false);
+        option.setScanSpan(3000);
+//        option.setIgnoreKillProcess(false);
         option.setOpenGps(true);
         option.setIsNeedAddress(true);
         option.setLocationNotify(true);
@@ -182,6 +166,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
         mMapView.onResume();
+        mBaiduMap.setMyLocationEnabled(true);
     }
 
     @Override
@@ -200,10 +185,9 @@ public class MainActivity extends AppCompatActivity {
 
         @Override
         public void onReceiveLocation(BDLocation location) {
-            Log.e(TAG, "onReceiveLocation: get in here");
-            Log.e(TAG, "onReceiveLocation: follows are location info:"+ location );
-            Log.e(TAG, "onReceiveLocation: latitude"+ location.getLatitude());
-            Log.e(TAG, "onReceiveLocation: longitude"+ location.getLongitude());
+            Log.e(TAG, "onReceiveLocation: latitude "+ location.getLatitude());
+            Log.e(TAG, "onReceiveLocation: longitude "+ location.getLongitude());
+            Log.e(TAG, "onReceiveLocation: direction "+location.getDirection());
 //            LatLng point = new LatLng(bdLocation.getLatitude(),
 //                    bdLocation.getLongitude());
 //            MapStatus mapStatus = new MapStatus.Builder()
@@ -212,21 +196,19 @@ public class MainActivity extends AppCompatActivity {
 //                    .build();
 //            MapStatusUpdate mapStatusUpdate = MapStatusUpdateFactory.newMapStatus(mapStatus);
 //            mBaiduMap.setMapStatus(mapStatusUpdate);
-            if (mMapView==null){
-                Log.e(TAG, "onReceiveLocation: location or mapview is null");
-                return;
-            }
-
             if (isFirstLoc){
-                LatLng ll = new LatLng(location.getLatitude(),location.getLongitude());
+                LatLng latLng = new LatLng(location.getLatitude(),location.getLongitude());
                 MapStatus.Builder builder = new MapStatus.Builder();
-                builder.target(ll).zoom(18.0f);
+                builder.target(latLng)
+                        .zoom(18.0f);
                 mBaiduMap.animateMapStatus(MapStatusUpdateFactory.newMapStatus(builder.build()));
                 isFirstLoc = false;
+                resetLocationByBDLocation(location);
 
             }else {
                 resetLocationByBDLocation(location);
             }
+
         }
 
     }
@@ -262,22 +244,15 @@ public class MainActivity extends AppCompatActivity {
     };
 
     private void resetLocationByBDLocation(BDLocation location){
+//        LatLng latLng = new LatLng()
         MyLocationData locData = new MyLocationData.Builder()
                 .accuracy(location.getRadius())
-                // 此处设置开发者获取到的方向信息，顺时针0-360
-                .direction(180).latitude(location.getLatitude())
+                .direction(location.getDirection()).latitude(location.getLatitude())
                 .longitude(location.getLongitude()).build();
-
         mBaiduMap.setMyLocationData(locData);
+        MyLocationConfiguration config = new MyLocationConfiguration(
+                MyLocationConfiguration.LocationMode.NORMAL, true, null);
+        mBaiduMap.setMyLocationConfiguration(config);
+
     }
-
-//    private void resetLocationByLatLng(LatLng latLng){
-//        MyLocationData locData = new MyLocationData.Builder()
-//                .accuracy(latLng.)
-//                // 此处设置开发者获取到的方向信息，顺时针0-360
-//                .direction(180).latitude(location.getLatitude())
-//                .longitude(location.getLongitude()).build();
-//        mBaiduMap.setMyLocationData(locData);
-//    }
-
 }

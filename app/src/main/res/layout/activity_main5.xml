@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_height="match_parent"
+    tools:context="com.example.amyas.customwidget.activity.Main5Activity">
+    <ImageView
+        android:id="@+id/camila"
+        android:layout_weight="2"
+        android:layout_width="match_parent"
+        android:scaleType="centerCrop"
+        android:layout_height="0dp"/>
+    <GridLayout
+        android:id="@+id/view_group"
+        android:layout_width="match_parent"
+        android:layout_weight="3"
+        android:columnCount="5"
+        android:layout_height="0dp">
+
+    </GridLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:orientation="horizontal"
+        android:layout_height="wrap_content">
+        <Button
+            android:id="@+id/change"
+            android:layout_width="0dp"
+            android:text="change"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"/>
+        <Button
+            android:id="@+id/reset"
+            android:layout_width="0dp"
+            android:text="reset"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"/>
+    </LinearLayout>
+
+</LinearLayout>

@@ -10,7 +10,11 @@
         <attr name="rightText" format="string"/>
         <attr name="rightBackground" format="reference|color"/>
         <attr name="rightTextColor" format="color"/>
+    </declare-styleable>
 
-
+    <declare-styleable name="DragView">
+        <attr name="ViewBackground" format="color"/>
+        <attr name="width" format="dimension"/>
+        <attr name="height" format="dimension"/>
     </declare-styleable>
 </resources>

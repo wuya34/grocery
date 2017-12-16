@@ -13,6 +13,8 @@ import android.util.AttributeSet;
 import android.util.Log;
 import android.view.MotionEvent;
 
+import static com.example.amyas.customwidget.activity.MainActivity.TAG;
+
 
 /**
  * author: Amyas
@@ -29,6 +31,8 @@ public class CustomTextView extends AppCompatTextView {
     private LinearGradient mLinearGradient;
     private Matrix mMatrix;
     private int mTranslate;
+    private int lastX;
+    private int lastY;
 
     public CustomTextView(Context context) {
         super(context);
@@ -66,7 +70,33 @@ public class CustomTextView extends AppCompatTextView {
 
     @Override
     public boolean onTouchEvent(MotionEvent event) {
-        return super.onTouchEvent(event);
+        int x = (int) event.getX();
+        int y = (int) event.getY();
+        Log.e(TAG, "onTouchEvent: 落点坐标 "+"("+x+" , "+y+")" );
+        switch (event.getAction()){
+            case MotionEvent.ACTION_DOWN:
+                Log.e(TAG, "onTouchEvent: ACTION_DOWN");
+                lastX = x;
+                lastY = y;
+                break;
+            case MotionEvent.ACTION_MOVE:
+                Log.e(TAG, "onTouchEvent: ACTION_MOVE");
+                int offsetX = x-lastX;
+                int offsetY = y-lastY;
+                Log.e(TAG, "onTouchEvent: 移动偏移 "+"("+offsetX+" , "+offsetY+")" );
+                layout(getLeft()+offsetX,
+                        getTop()+offsetY,
+                        getRight()+offsetX,
+                        getBottom()+offsetY);
+
+                lastX = x;
+                lastY = y;
+                Log.e(TAG, "onTouchEvent: last坐标 "+"("+lastX+" , "+lastY+")" );
+                break;
+            case MotionEvent.ACTION_UP:
+                break;
+        }
+        return true;
     }
 
     @Override
