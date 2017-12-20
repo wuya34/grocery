@@ -6,6 +6,8 @@
         android:viewportHeight="100"
         android:viewportWidth="100">
     <group android:name="test"
+           android:pivotX="50"
+           android:pivotY="50"
            android:rotation="0">
         <path android:strokeColor="@android:color/holo_blue_light"
               android:strokeWidth="2"

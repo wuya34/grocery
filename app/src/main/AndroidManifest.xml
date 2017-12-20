@@ -34,7 +34,7 @@
         <!-- android:enabled="true" -->
         <!-- android:process=":remote" /> -->
 
-        <activity android:name=".activity.Main7Activity">
+        <activity android:name=".activity.Main8Activity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
@@ -47,7 +47,9 @@
         <!-- </activity> -->
         <!-- <activity android:name=".activity.Main6Activity"> -->
         <!-- </activity> -->
-        <!--<activity android:name=".activity.Main7Activity">-->
+        <!-- <activity android:name=".activity.Main7Activity"> -->
+        <!-- </activity> -->
+        <!--<activity android:name=".activity.Main8Activity">-->
         <!--</activity>-->
     </application>
 

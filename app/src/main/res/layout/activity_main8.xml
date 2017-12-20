@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.amyas.customwidget.activity.Main8Activity">
+
+    <ImageView
+        android:id="@+id/moon"
+        android:layout_marginRight="100dp"
+        android:layout_marginBottom="100dp"
+        android:layout_width="wrap_content"
+        android:src="@drawable/ic_action_moon"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:layout_height="wrap_content"/>
+    <ImageView
+        android:id="@+id/place"
+        android:layout_marginRight="100dp"
+        android:layout_marginBottom="100dp"
+        android:layout_width="wrap_content"
+        android:src="@drawable/ic_action_place"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:layout_height="wrap_content"/>
+    <ImageView
+        android:id="@+id/bath"
+        android:layout_marginRight="100dp"
+        android:layout_marginBottom="100dp"
+        android:layout_width="wrap_content"
+        android:src="@drawable/ic_action_bath"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:layout_height="wrap_content"/>
+    <ImageView
+        android:id="@+id/call"
+        android:layout_marginRight="100dp"
+        android:layout_marginBottom="100dp"
+        android:layout_width="wrap_content"
+        android:src="@drawable/ic_action_call"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:layout_height="wrap_content"/>
+    <ImageView
+        android:layout_marginRight="100dp"
+        android:layout_marginBottom="100dp"
+        android:id="@+id/spot"
+        android:layout_width="38dp"
+        android:src="@drawable/spot"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:layout_height="38dp"/>
+    <TextView
+        android:id="@+id/count_down"
+        android:layout_width="200dp"
+        android:layout_centerInParent="true"
+        android:textSize="20sp"
+        android:gravity="center"
+        android:text="倒计时"
+        android:layout_height="200dp"/>
+
+
+</RelativeLayout>

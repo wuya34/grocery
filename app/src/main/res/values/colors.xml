@@ -9,5 +9,6 @@
     <color name="shadow_start">#DD000000</color>
     <color name="shadow_end">#10000000</color>
     <color name="gray">#FF888888</color>
+    <color name="red">#fd4747</color>
 
 </resources>

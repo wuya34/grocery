@@ -28,7 +28,7 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:scaleType="centerCrop"
-        android:src="@drawable/anim_vec_par_line"
+        android:src="@drawable/anim_vector"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
