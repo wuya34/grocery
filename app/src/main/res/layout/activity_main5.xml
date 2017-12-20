@@ -37,6 +37,12 @@
             android:text="reset"
             android:layout_weight="1"
             android:layout_height="wrap_content"/>
+        <Button
+            android:id="@+id/gray_effect"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:text="gray effect"
+            android:layout_height="match_parent"/>
     </LinearLayout>
 
 </LinearLayout>

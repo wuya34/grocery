@@ -7,7 +7,6 @@ import android.graphics.ColorMatrix;
 import android.graphics.ColorMatrixColorFilter;
 import android.graphics.Paint;
 import android.os.Bundle;
-import android.util.Log;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.GridLayout;
@@ -29,6 +28,8 @@ public class Main5Activity extends BaseActivity {
     Button change;
     @BindView(R.id.reset)
     Button reset;
+    @BindView(R.id.gray_effect)
+    Button grayEffect;
 
     private Bitmap mBitmap;
     private int mEtsWidth;
@@ -127,6 +128,35 @@ public class Main5Activity extends BaseActivity {
     private void getMatrix() {
         for (int i = 0; i < mEts.length; i++) {
             mColorMatrix[i] = Float.valueOf(mEts[i].getText().toString());
+        }
+    }
+
+    /**
+     * 设置灰度效果
+     */
+    @OnClick(R.id.gray_effect)
+    public void setGrayScaleEffect(){
+        initEts();
+        setMatrix();
+        getMatrix();
+        setImageMatrix();
+    }
+
+    /**
+     * 设置矩阵值
+     */
+    private void setMatrix(){
+
+        for (int i = 0; i < mEts.length; i++) {
+            if (i<15){
+                if (i%5==2){
+                    mEts[i].setText("0.11");
+                }else if (i%5==1){
+                    mEts[i].setText("0.59");
+                }else if (i%5==0){
+                    mEts[i].setText("0.33");
+                }
+            }
         }
     }
 }

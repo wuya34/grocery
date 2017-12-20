@@ -1,4 +1,4 @@
-package com.example.amyas.customwidget;
+package com.example.amyas.customwidget.util;
 
 import android.content.Context;
 import android.widget.Toast;

@@ -1,4 +1,4 @@
-package com.example.amyas.customwidget;
+package com.example.amyas.customwidget.scroll.group;
 
 import android.content.Context;
 import android.content.res.TypedArray;
@@ -9,6 +9,8 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+
+import com.example.amyas.customwidget.R;
 
 
 /**

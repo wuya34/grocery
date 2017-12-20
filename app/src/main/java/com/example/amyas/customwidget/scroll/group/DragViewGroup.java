@@ -70,7 +70,6 @@ public class DragViewGroup extends FrameLayout {
         public void onViewPositionChanged(View changedView, int left, int top, int dx, int dy) {
             super.onViewPositionChanged(changedView, left, top, dx, dy);
 //            Log.e(TAG, "onViewPositionChanged: ");
-            // TODO: 2017/12/15 为什么只缩放一次
 //            changedView.setScaleY(getViewScale());
 //            changedView.setScaleX(getViewScale());
         }

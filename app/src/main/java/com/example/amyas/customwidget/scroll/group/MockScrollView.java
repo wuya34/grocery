@@ -1,4 +1,4 @@
-package com.example.amyas.customwidget;
+package com.example.amyas.customwidget.scroll.group;
 
 import android.content.Context;
 import android.content.res.Resources;

@@ -28,7 +28,7 @@ import com.baidu.mapapi.map.OverlayOptions;
 import com.baidu.mapapi.map.TextureMapView;
 import com.baidu.mapapi.model.LatLng;
 import com.example.amyas.customwidget.R;
-import com.example.amyas.customwidget.ToastUtil;
+import com.example.amyas.customwidget.util.ToastUtil;
 
 /**
  * 百度地图方向指示最好采用传感器，获取位置间隔时间应为3-5秒

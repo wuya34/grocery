@@ -4,6 +4,10 @@
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
     <color name="white">#d6d6d6</color>
-    <color name="transparent">#00000000</color>
+    <color name="transparent">#00a61a1a</color>
+
+    <color name="shadow_start">#DD000000</color>
+    <color name="shadow_end">#10000000</color>
+    <color name="gray">#FF888888</color>
 
 </resources>

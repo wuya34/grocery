@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<animated-vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:drawable="@drawable/par_line">
+    <target
+        android:animation="@animator/par_line1"
+        android:name="path1"/>
+    <target
+        android:animation="@animator/par_line2"
+        android:name="path2"/>
+
+</animated-vector>

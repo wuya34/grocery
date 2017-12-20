@@ -1,4 +1,4 @@
-package com.example.amyas.customwidget;
+package com.example.amyas.customwidget.scroll.view;
 
 import android.content.Context;
 import android.graphics.Canvas;
@@ -12,6 +12,8 @@ import android.support.v7.widget.AppCompatTextView;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.MotionEvent;
+
+import com.example.amyas.customwidget.R;
 
 import static com.example.amyas.customwidget.activity.MainActivity.TAG;
 
