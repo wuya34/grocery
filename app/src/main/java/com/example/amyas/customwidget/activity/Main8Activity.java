@@ -30,7 +30,6 @@ public class Main8Activity extends AppCompatActivity {
     ImageView mSpot;
     @BindView(R.id.count_down)
     TextView mCountDown;
-
     private boolean isClicked = false;
     private int process;
     private int emitDistance = 100;
@@ -47,7 +46,7 @@ public class Main8Activity extends AppCompatActivity {
             @Override
             public void onAnimationUpdate(ValueAnimator animation) {
                 process = (int) animation.getAnimatedValue();
-                mCountDown.setText(process+" %");
+                mCountDown.setText(process + " %");
             }
         });
         mValueAnimator.setDuration(10000);

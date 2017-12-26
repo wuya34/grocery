@@ -34,7 +34,9 @@
         <!-- android:enabled="true" -->
         <!-- android:process=":remote" /> -->
 
-        <activity android:name=".activity.Main8Activity">
+        <activity
+            android:name=".activity.Main9Activity"
+            android:clearTaskOnLaunch="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
@@ -49,7 +51,13 @@
         <!-- </activity> -->
         <!-- <activity android:name=".activity.Main7Activity"> -->
         <!-- </activity> -->
-        <!--<activity android:name=".activity.Main8Activity">-->
+        <!-- <activity android:name=".activity.Main8Activity"> -->
+        <!-- </activity> -->
+        <!-- <activity android:name=".activity.Main9Activity"> -->
+        <!-- </activity> -->
+        <activity android:name=".activity.AnimateActivity">
+        </activity>
+        <!--<activity android:name=".activity.Main10Activity">-->
         <!--</activity>-->
     </application>
 

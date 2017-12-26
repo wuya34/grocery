@@ -2,6 +2,8 @@ package com.example.amyas.customwidget.activity;
 
 import android.graphics.drawable.Animatable;
 import android.os.Bundle;
+import android.support.constraint.ConstraintLayout;
+import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -19,6 +21,8 @@ public class Main7Activity extends AppCompatActivity {
     ImageView mRectangle;
     @BindView(R.id.start_animation)
     Button mStartAnimation;
+    @BindView(R.id.root)
+    ConstraintLayout mRoot;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,7 +45,8 @@ public class Main7Activity extends AppCompatActivity {
 
     @OnClick(R.id.rectangle)
     public void camilaClick() {
-        ToastUtil.showToast(Main7Activity.this, "clicked camila..");
+        Snackbar.make(mRoot, "clicked camila..", Snackbar.LENGTH_LONG).show();
+//        ToastUtil.showToast(Main7Activity.this, "clicked camila..");
     }
 
 
