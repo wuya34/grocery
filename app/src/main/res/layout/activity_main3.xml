@@ -17,7 +17,7 @@
             android:layout_height="match_parent">
             <TextView
                 android:layout_width="wrap_content"
-                android:text="侧边抽屉"
+                android:text="抽屉版面"
                 android:layout_height="wrap_content"/>
 
         </FrameLayout>
@@ -26,10 +26,12 @@
             android:background="@color/colorAccent"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
-            <TextView
-                android:layout_width="wrap_content"
-                android:text="内容版面"
-                android:layout_height="wrap_content"/>
+
+            <ImageView
+                android:id="@+id/camila"
+                android:scaleType="centerCrop"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"/>
         </FrameLayout>
     </com.example.amyas.customwidget.scroll.group.DragViewGroup>
 
