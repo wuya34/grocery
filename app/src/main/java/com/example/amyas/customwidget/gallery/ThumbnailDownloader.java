@@ -71,7 +71,7 @@ public class ThumbnailDownloader<T> extends HandlerThread {
             //            Log.e(TAG, "handleRequest: url is null");
             return;
         }
-        final Bitmap bitmap = FetchPhoto.getBitmapByUrl(url);
+//        final Bitmap bitmap = FetchPhoto.getInputStreamByUrl(url);
         responseHandler.post(new Runnable() {
             @Override
             public void run() {
@@ -80,7 +80,7 @@ public class ThumbnailDownloader<T> extends HandlerThread {
                     Log.e(TAG, "run: ThumbnailDownloader hasQuit = true");
                     return;
                 }
-                mListener.onThumbnailDownloaded(target, bitmap, url);
+//                mListener.onThumbnailDownloaded(target, bitmap, url);
             }
         });
     }

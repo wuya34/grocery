@@ -32,33 +32,33 @@ public class Main3Activity extends AppCompatActivity {
         setContentView(R.layout.activity_main3);
         ButterKnife.bind(this);
 
-        Observable.create(new ObservableOnSubscribe<Bitmap>() {
-            @Override
-            public void subscribe(ObservableEmitter<Bitmap> e) throws Exception {
-                Log.e(TAG, "accept: subscribe Thread.currentThread().getName() ="
-                        + Thread.currentThread().getName());
-                Bitmap bitmap = FetchPhoto.getBitmapByUrl("https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=95608140,3153770266&fm=27&gp=0.jpg");
-                e.onNext(bitmap);
-            }
-        }).observeOn(Schedulers.io())
-                .doOnNext(new Consumer<Bitmap>() {
-                    @Override
-                    public void accept(Bitmap bitmap) throws Exception {
-                        Log.e(TAG, "accept: doOnNext bitmap = " + bitmap);
-                        Log.e(TAG, "accept: doOnNext Thread.currentThread().getName() ="
-                                + Thread.currentThread().getName());
-                    }
-                })
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Consumer<Bitmap>() {
-                    @Override
-                    public void accept(Bitmap bitmap) throws Exception {
-                        mCamila.setImageBitmap(bitmap);
-                        Log.e(TAG, "accept: subscribe Thread.currentThread().getName() ="
-                                + Thread.currentThread().getName());
-                    }
-                });
+//        Observable.create(new ObservableOnSubscribe<Bitmap>() {
+//            @Override
+//            public void subscribe(ObservableEmitter<Bitmap> e) throws Exception {
+//                Log.e(TAG, "accept: subscribe Thread.currentThread().getName() ="
+//                        + Thread.currentThread().getName());
+//                Bitmap bitmap = FetchPhoto.getInputStreamByUrl("https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=95608140,3153770266&fm=27&gp=0.jpg");
+//                e.onNext(bitmap);
+//            }
+//        }).observeOn(Schedulers.io())
+//                .doOnNext(new Consumer<Bitmap>() {
+//                    @Override
+//                    public void accept(Bitmap bitmap) throws Exception {
+//                        Log.e(TAG, "accept: doOnNext bitmap = " + bitmap);
+//                        Log.e(TAG, "accept: doOnNext Thread.currentThread().getName() ="
+//                                + Thread.currentThread().getName());
+//                    }
+//                })
+//                .subscribeOn(Schedulers.io())
+//                .observeOn(AndroidSchedulers.mainThread())
+//                .subscribe(new Consumer<Bitmap>() {
+//                    @Override
+//                    public void accept(Bitmap bitmap) throws Exception {
+//                        mCamila.setImageBitmap(bitmap);
+//                        Log.e(TAG, "accept: subscribe Thread.currentThread().getName() ="
+//                                + Thread.currentThread().getName());
+//                    }
+//                });
 
         //        Observable.just(1)
         //                .observeOn(Schedulers.io())
