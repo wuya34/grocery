@@ -35,7 +35,7 @@
         <!-- android:process=":remote" /> -->
 
         <activity
-            android:name=".gallery.Main12Activity"
+            android:name=".rx.RxOperatorActivity"
             android:clearTaskOnLaunch="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
@@ -55,8 +55,8 @@
         <!-- </activity> -->
         <!-- <activity android:name=".activity.Main9Activity"> -->
         <!-- </activity> -->
-        <activity android:name=".activity.AnimateActivity">
-    </activity>
+        <!--<activity android:name=".activity.AnimateActivity">-->
+    <!--</activity>-->
         <!-- <activity android:name=".activity.Main10Activity"> -->
         <!-- </activity> -->
         <!-- <activity android:name=".activity.Main11Activity"> -->

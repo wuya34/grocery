@@ -23,6 +23,10 @@ android {
             //说明so的路径为该libs路径，关联所有地图SDK的so文件
         }
     }
+    compileOptions {
+        targetCompatibility 1.8
+        sourceCompatibility 1.8
+    }
 }
 
 dependencies {

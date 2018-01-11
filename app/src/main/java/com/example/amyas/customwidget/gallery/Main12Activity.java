@@ -40,6 +40,8 @@ import io.reactivex.Observable;
 import io.reactivex.ObservableEmitter;
 import io.reactivex.ObservableOnSubscribe;
 import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.disposables.CompositeDisposable;
+import io.reactivex.disposables.Disposable;
 import io.reactivex.functions.Consumer;
 import io.reactivex.schedulers.Schedulers;
 
@@ -55,6 +57,7 @@ public class Main12Activity extends AppCompatActivity {
 //    private ThumbnailDownloader<MyAdapter.MyHolder> mThumbnailDownloader;
     private DiskLruCache mDiskLruCache;
     private int diskLruCacheSize = 1024 * 1024 * 50;
+    private CompositeDisposable mCompositeDisposable = new CompositeDisposable();
 
     /**
      * 获取磁盘缓存目录
@@ -140,6 +143,7 @@ public class Main12Activity extends AppCompatActivity {
     protected void onDestroy() {
         super.onDestroy();
         unbinder.unbind();
+        mCompositeDisposable.dispose();
 //        mThumbnailDownloader.clearQueue();
     }
 
@@ -313,7 +317,7 @@ public class Main12Activity extends AppCompatActivity {
 
             private void getBitmap(String url) {
                 Log.e(TAG, "getBitmap: on holder");
-                Observable.concat(
+                Disposable disposable = Observable.concat(
                         getBitmapFromMemoryCache(url),
                         getBitmapFromDiskCache(url),
                         getBitmapFromNet(url))
@@ -326,7 +330,7 @@ public class Main12Activity extends AppCompatActivity {
                                 mImageView.setImageBitmap(bitmap);
                             }
                         });
-                //.dispose();
+                mCompositeDisposable.add(disposable);
 
             }
         }
