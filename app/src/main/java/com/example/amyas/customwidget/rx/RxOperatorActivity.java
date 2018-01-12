@@ -1,11 +1,16 @@
 package com.example.amyas.customwidget.rx;
 
+import android.os.Build;
 import android.os.Bundle;
+import android.os.Looper;
 import android.support.v7.app.AppCompatActivity;
+import android.transition.Explode;
 import android.util.Log;
+import android.view.Window;
 import android.widget.Button;
 
 import com.example.amyas.customwidget.R;
+import com.example.amyas.customwidget.util.RxUtil;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -24,7 +29,6 @@ import io.reactivex.SingleOnSubscribe;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.disposables.Disposable;
-import io.reactivex.functions.BiFunction;
 import io.reactivex.schedulers.Schedulers;
 
 /**
@@ -78,9 +82,12 @@ public class RxOperatorActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            getWindow().requestFeature(Window.FEATURE_CONTENT_TRANSITIONS);
+            getWindow().setEnterTransition(new Explode());
+        }
         setContentView(R.layout.activity_main3);
         unbinder = ButterKnife.bind(this);
-
         //        Disposable buffer = new ViewClickOnSubscribe(findViewById(R.id.button15))
         //                .subscribeOn(Schedulers.io())
         //                .observeOn(AndroidSchedulers.mainThread())
@@ -373,11 +380,23 @@ public class RxOperatorActivity extends AppCompatActivity {
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(integer -> Log.e(TAG, "onMButton16Clicked: accept " + integer));
         mCompositeDisposable.add(scan);
-
     }
 
     @OnClick(R.id.button17)
     public void onMButton17Clicked() {
+        Observable
+                .create(e -> {
+                    Log.e(TAG, "onMButton17Clicked: looper -> " +
+                    Thread.currentThread().getName());
+                    e.onNext("1");
+                    e.onNext("2");
+                })
+                .compose(RxUtil.workIoObMain())
+                .subscribe(s -> {
+                    Log.e(TAG, "onMButton17Clicked: looper ->"+
+                            Thread.currentThread().getName());
+                    Log.e(TAG, "onMButton17Clicked: accept "+s );
+                });
 
     }
 

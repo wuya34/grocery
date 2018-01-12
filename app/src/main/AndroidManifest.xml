@@ -35,7 +35,7 @@
         <!-- android:process=":remote" /> -->
 
         <activity
-            android:name=".rx.RxOperatorActivity"
+            android:name=".rx.BlankActivity"
             android:clearTaskOnLaunch="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
@@ -43,6 +43,9 @@
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
+        <activity android:name=".activity.AnimateActivity"/>
+        <activity android:name=".rx.RxOperatorActivity"/>
+        <activity android:name=".rx.LeakActivity"/>
         <!-- <activity android:name=".activity.Main4Activity"> -->
         <!-- </activity> -->
         <!-- <activity android:name=".activity.Main5Activity"> -->

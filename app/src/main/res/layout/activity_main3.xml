@@ -118,7 +118,7 @@
             android:id="@+id/button17"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Button"/>
+            android:text="ObservableTransformer"/>
 
         <Button
             android:id="@+id/button18"
