@@ -241,41 +241,38 @@ public class Main12Activity extends AppCompatActivity {
     }
 
     private Observable<Bitmap> getBitmapFromNet(final String url) {
-        return Observable.create(new ObservableOnSubscribe<Bitmap>() {
-            @Override
-            public void subscribe(ObservableEmitter<Bitmap> e) throws Exception {
-                InputStream stream = FetchPhoto.getInputStreamByUrl(url);
-                Log.e(TAG, "subscribe: stream -> "+ stream );
-                if (stream != null) {
-                    // 放到内存缓存中
-                    Bitmap bitmap = FetchPhoto.decodeBitmapFromStream(stream);
-                    if (bitmap!=null){
-                        mLruCache.put(url, bitmap);
-                        Log.e(TAG, "subscribe: 存入内存缓存");
-                    }
-                    // 放到磁盘缓存中
-                    try {
-                        String key = hashKeyForDisk(url);
-                        DiskLruCache.Editor editor = mDiskLruCache.edit(key);
-                        if (editor != null) {
-                            OutputStream outputStream = editor.newOutputStream(0);
-                            if (saveInputStreamToDiskCache(stream, outputStream)) {
-                                editor.commit();
-                                Log.e(TAG, "subscribe: 存入磁盘缓存");
-                            } else {
-                                editor.abort();
-                            }
-                        }
-                    } catch (IOException ex) {
-                        ex.printStackTrace();
-                    }
-                    Log.e(TAG, "subscribe: 网络请求读取数据");
-
-
-                    e.onNext(bitmap);
-                } else {
-                    e.onComplete();
+        return Observable.create((ObservableOnSubscribe<Bitmap>) e -> {
+            InputStream stream = FetchPhoto.getInputStreamByUrl(url);
+            Log.e(TAG, "subscribe: stream -> "+ stream );
+            if (stream != null) {
+                // 放到内存缓存中
+                Bitmap bitmap = FetchPhoto.decodeBitmapFromStream(stream);
+                if (bitmap!=null){
+                    mLruCache.put(url, bitmap);
+                    Log.e(TAG, "subscribe: 存入内存缓存");
                 }
+                // 放到磁盘缓存中
+                try {
+                    String key = hashKeyForDisk(url);
+                    DiskLruCache.Editor editor = mDiskLruCache.edit(key);
+                    if (editor != null) {
+                        OutputStream outputStream = editor.newOutputStream(0);
+                        if (saveInputStreamToDiskCache(stream, outputStream)) {
+                            editor.commit();
+                            Log.e(TAG, "subscribe: 存入磁盘缓存");
+                        } else {
+                            editor.abort();
+                        }
+                    }
+                } catch (IOException ex) {
+                    ex.printStackTrace();
+                }
+                Log.e(TAG, "subscribe: 网络请求读取数据");
+
+
+                e.onNext(bitmap);
+            } else {
+                e.onComplete();
             }
         }).subscribeOn(Schedulers.io());
     }
@@ -324,12 +321,7 @@ public class Main12Activity extends AppCompatActivity {
                         .take(1)
                         .subscribeOn(Schedulers.io())
                         .observeOn(AndroidSchedulers.mainThread())
-                        .subscribe(new Consumer<Bitmap>() {
-                            @Override
-                            public void accept(Bitmap bitmap) throws Exception {
-                                mImageView.setImageBitmap(bitmap);
-                            }
-                        });
+                        .subscribe(bitmap -> mImageView.setImageBitmap(bitmap));
                 mCompositeDisposable.add(disposable);
 
             }

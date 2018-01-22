@@ -1,4 +1,4 @@
-package com.example.amyas.customwidget.activity;
+package com.example.amyas.customwidget.thumbCache;
 
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -12,20 +12,15 @@ import android.util.LruCache;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AbsListView;
 import android.widget.ImageView;
 
 import com.example.amyas.customwidget.R;
 
 import java.io.IOException;
 import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
 import java.net.URL;
-import java.util.ArrayList;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
-import java.util.zip.Inflater;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
