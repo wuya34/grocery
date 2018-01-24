@@ -26,16 +26,17 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <meta-data
+            android:name="com.baidu.lbsapi.API_KEY"
+            android:value="jfG6XetzUPF7QeUuVbLe3sYitwrulaUm"/>
 
-         <meta-data android:name="com.baidu.lbsapi.API_KEY"
-         android:value="jfG6XetzUPF7QeUuVbLe3sYitwrulaUm"/>
-         <service
-         android:name="com.baidu.location.f"
-         android:enabled="true"
-         android:process=":remote" />
+        <service
+            android:name="com.baidu.location.f"
+            android:enabled="true"
+            android:process=":remote"/>
 
         <activity
-            android:name=".paint.PaintActivity"
+            android:name=".calendar.CalendarActivity"
             android:clearTaskOnLaunch="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
@@ -65,7 +66,9 @@
         </activity>
         <activity android:name=".gallery.Main12Activity">
         </activity>
-        <!--<activity android:name=".paint.PaintActivity">-->
+         <activity android:name=".paint.PaintActivity">
+         </activity>
+        <!--<activity android:name=".calendar.CalendarActivity">-->
         <!--</activity>-->
     </application>
 
