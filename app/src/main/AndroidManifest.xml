@@ -27,15 +27,15 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
 
-        <!-- <meta-data android:name="com.baidu.lbsapi.API_KEY" -->
-        <!-- android:value="jfG6XetzUPF7QeUuVbLe3sYitwrulaUm"/> -->
-        <!-- <service -->
-        <!-- android:name="com.baidu.location.f" -->
-        <!-- android:enabled="true" -->
-        <!-- android:process=":remote" /> -->
+         <meta-data android:name="com.baidu.lbsapi.API_KEY"
+         android:value="jfG6XetzUPF7QeUuVbLe3sYitwrulaUm"/>
+         <service
+         android:name="com.baidu.location.f"
+         android:enabled="true"
+         android:process=":remote" />
 
         <activity
-            android:name=".activity.CircleImageViewActivity"
+            android:name=".paint.PaintActivity"
             android:clearTaskOnLaunch="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
@@ -47,24 +47,26 @@
         <activity android:name=".rx.RxOperatorActivity"/>
         <activity android:name=".rx.LeakActivity"/>
         <activity android:name=".rx.BlankActivity"/>
-         <activity android:name=".activity.Main4Activity">
-         </activity>
-         <activity android:name=".activity.Main5Activity">
-         </activity>
-         <activity android:name=".activity.Main6Activity">
-         </activity>
-         <activity android:name=".activity.Main7Activity">
-         </activity>
-         <activity android:name=".activity.Main8Activity">
-         </activity>
-         <activity android:name=".activity.Main9Activity">
-         </activity>
-         <activity android:name=".activity.Main10Activity">
-         </activity>
-         <activity android:name=".thumbCache.Main11Activity">
-         </activity>
+        <activity android:name=".activity.Main4Activity">
+        </activity>
+        <activity android:name=".activity.Main5Activity">
+        </activity>
+        <activity android:name=".activity.Main6Activity">
+        </activity>
+        <activity android:name=".activity.Main7Activity">
+        </activity>
+        <activity android:name=".activity.Main8Activity">
+        </activity>
+        <activity android:name=".activity.Main9Activity">
+        </activity>
+        <activity android:name=".activity.Main10Activity">
+        </activity>
+        <activity android:name=".thumbCache.Main11Activity">
+        </activity>
         <activity android:name=".gallery.Main12Activity">
         </activity>
+        <!--<activity android:name=".paint.PaintActivity">-->
+        <!--</activity>-->
     </application>
 
 </manifest>

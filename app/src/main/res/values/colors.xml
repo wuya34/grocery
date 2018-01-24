@@ -10,5 +10,7 @@
     <color name="shadow_end">#10000000</color>
     <color name="gray">#FF888888</color>
     <color name="red">#fd4747</color>
+    <color name="light_blue">#35cadb</color>
+    <color name="dark_blue">#298ed0</color>
 
 </resources>

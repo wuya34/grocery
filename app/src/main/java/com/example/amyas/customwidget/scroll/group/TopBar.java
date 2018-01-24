@@ -21,7 +21,7 @@ import com.example.amyas.customwidget.R;
 public class TopBar extends RelativeLayout {
     //widget attrs
     private int mLeftTextColor;
-    private int mRgithTextColor;
+    private int mRightTextColor;
     private int mTitleTextColor;
     private String title;
     private String leftText;
@@ -48,7 +48,7 @@ public class TopBar extends RelativeLayout {
         mTitleView = new Button(context);
         TypedArray ta = context.obtainStyledAttributes(attrs, R.styleable.TopBar);
         mLeftTextColor = ta.getColor(R.styleable.TopBar_leftTextColor,0);
-        mRgithTextColor = ta.getColor(R.styleable.TopBar_rightTextColor,0);
+        mRightTextColor = ta.getColor(R.styleable.TopBar_rightTextColor,0);
         mTitleTextColor = ta.getColor(R.styleable.TopBar_titleTextColor,0);
         title = ta.getString(R.styleable.TopBar_title);
         leftText = ta.getString(R.styleable.TopBar_leftText);
@@ -67,7 +67,7 @@ public class TopBar extends RelativeLayout {
         leftButton.setText(leftText);
         leftButton.setBackground(mLeftTextBackground);
 
-        rightButton.setTextColor(mRgithTextColor);
+        rightButton.setTextColor(mRightTextColor);
         rightButton.setText(rightText);
         rightButton.setBackground(mRightTextBackground);
 
