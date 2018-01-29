@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <android.support.constraint.Guideline
+        android:id="@+id/guideline"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.05"/>
+
+    <android.support.constraint.Guideline
+        android:id="@+id/guideline2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.4"/>
+    <View
+        android:id="@+id/foo"
+        android:background="@color/gray"
+        app:layout_constraintRight_toLeftOf="@+id/guideline"
+        android:layout_width="1dp"
+        android:layout_height="match_parent"/>
+
+    <ImageView
+        android:id="@+id/round1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:src="@mipmap/ic_service_info"
+        app:layout_constraintLeft_toLeftOf="@+id/guideline"
+        app:layout_constraintRight_toRightOf="@+id/guideline"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+    <TextView
+        android:id="@+id/book_name_t"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:text="预约人"
+        app:layout_constraintStart_toEndOf="@+id/round1"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+    <TextView
+        android:id="@+id/book_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:text="某某"
+        android:textColor="@color/blue"
+        app:layout_constraintBaseline_toBaselineOf="@+id/book_name_t"
+        app:layout_constraintStart_toStartOf="@+id/guideline2"/>
+
+    <ImageView
+        android:id="@+id/round2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:src="@mipmap/ic_service_info"
+        app:layout_constraintLeft_toLeftOf="@+id/guideline"
+        app:layout_constraintRight_toRightOf="@+id/guideline"
+        app:layout_constraintTop_toBottomOf="@+id/book_name_t"/>
+
+    <TextView
+        android:id="@+id/land_t"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:text="服务田块"
+        app:layout_constraintStart_toEndOf="@+id/round2"
+        app:layout_constraintTop_toBottomOf="@+id/book_name_t"/>
+
+    <TextView
+        android:id="@+id/land"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:text="某某"
+        android:textColor="@color/blue"
+        app:layout_constraintBaseline_toBaselineOf="@+id/land_t"
+        app:layout_constraintStart_toStartOf="@+id/guideline2"/>
+
+
+    <ImageView
+        android:id="@+id/round3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:src="@mipmap/ic_service_info"
+        app:layout_constraintLeft_toLeftOf="@+id/guideline"
+        app:layout_constraintRight_toRightOf="@+id/guideline"
+        app:layout_constraintTop_toBottomOf="@+id/land_t"/>
+
+    <TextView
+        android:id="@+id/crop_t"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:text="服务田块"
+        app:layout_constraintStart_toEndOf="@+id/round2"
+        app:layout_constraintTop_toBottomOf="@+id/land_t"/>
+
+    <TextView
+        android:id="@+id/crop"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:text="某某"
+        android:textColor="@color/blue"
+        app:layout_constraintBaseline_toBaselineOf="@+id/crop_t"
+        app:layout_constraintStart_toStartOf="@+id/guideline2"/>
+
+    <ImageView
+        android:id="@+id/round4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:src="@mipmap/ic_service_info"
+        app:layout_constraintLeft_toLeftOf="@+id/guideline"
+        app:layout_constraintRight_toRightOf="@+id/guideline"
+        app:layout_constraintTop_toBottomOf="@+id/crop_t"/>
+
+    <TextView
+        android:id="@+id/drug_t"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:text="服务田块"
+        app:layout_constraintStart_toEndOf="@+id/round2"
+        app:layout_constraintTop_toBottomOf="@+id/crop_t"/>
+
+    <TextView
+        android:id="@+id/drug"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:text="某某"
+        android:textColor="@color/blue"
+        app:layout_constraintBaseline_toBaselineOf="@+id/drug_t"
+        app:layout_constraintStart_toStartOf="@+id/guideline2"/>
+
+    <Button
+        android:id="@+id/button22"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:text="Button"
+        app:layout_constraintStart_toEndOf="@+id/foo"
+        app:layout_constraintTop_toBottomOf="@+id/drug_t"/>
+
+    <Button
+        android:id="@+id/button23"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:text="Button"
+        app:layout_constraintStart_toStartOf="@+id/guideline2"
+        app:layout_constraintTop_toBottomOf="@+id/drug"/>
+
+    <Button
+        android:id="@+id/info_next"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:text="下一步"
+        app:layout_constraintStart_toStartOf="@+id/guideline"
+        app:layout_constraintTop_toBottomOf="@+id/button22"/>
+
+</android.support.constraint.ConstraintLayout>

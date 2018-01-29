@@ -36,7 +36,7 @@
             android:process=":remote"/>
 
         <activity
-            android:name=".calendar.CalendarActivity"
+            android:name=".viewstub.ViewStubActivity"
             android:clearTaskOnLaunch="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
@@ -66,9 +66,11 @@
         </activity>
         <activity android:name=".gallery.Main12Activity">
         </activity>
-         <activity android:name=".paint.PaintActivity">
+        <activity android:name=".paint.PaintActivity">
+        </activity>
+         <activity android:name=".calendar.CalendarActivity">
          </activity>
-        <!--<activity android:name=".calendar.CalendarActivity">-->
+        <!--<activity android:name=".viewstub.ViewStubActivity">-->
         <!--</activity>-->
     </application>
 
