@@ -14,4 +14,9 @@
     <color name="dark_blue">#298ed0</color>
     <color name="blue">#1898e3</color>
 
+    <color name="text_hint">#acabab</color>
+    <color name="wheat_orange">#ee831c</color>
+    <color name="rice_red">#eb471f</color>
+    <color name="corn_green">#55bc0e</color>
+
 </resources>
