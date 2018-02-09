@@ -36,7 +36,7 @@
             android:process=":remote"/>
 
         <activity
-            android:name=".widget.WidgetActivity"
+            android:name=".bundle.FirstActivity"
             android:clearTaskOnLaunch="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
@@ -74,8 +74,10 @@
         </activity>
          <activity android:name=".debug.WebViewTestActivity">
          </activity>
-        <!--<activity android:name=".widWidgetActivityvity">-->
-        <!--</activity>-->
+        <activity android:name=".widget.WidgetActivity">
+        </activity>
+        <!--<activity android:name=".bundle.FirstActivity"/>-->
+        <activity android:name=".bundle.SecondActivity"/>
     </application>
 
 </manifest>
