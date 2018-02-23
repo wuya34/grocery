@@ -78,6 +78,7 @@
         </activity>
         <!--<activity android:name=".bundle.FirstActivity"/>-->
         <activity android:name=".bundle.SecondActivity"/>
+        <activity android:name=".widget.PopupWindowTest"/>
     </application>
 
 </manifest>
