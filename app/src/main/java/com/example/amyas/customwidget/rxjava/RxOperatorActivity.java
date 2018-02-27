@@ -1,8 +1,7 @@
-package com.example.amyas.customwidget.rx;
+package com.example.amyas.customwidget.rxjava;
 
 import android.os.Build;
 import android.os.Bundle;
-import android.os.Looper;
 import android.support.v7.app.AppCompatActivity;
 import android.transition.Explode;
 import android.util.Log;

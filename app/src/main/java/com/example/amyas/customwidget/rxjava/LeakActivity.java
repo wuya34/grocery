@@ -1,8 +1,5 @@
-package com.example.amyas.customwidget.rx;
+package com.example.amyas.customwidget.rxjava;
 
-import android.app.ActivityOptions;
-import android.content.Intent;
-import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
