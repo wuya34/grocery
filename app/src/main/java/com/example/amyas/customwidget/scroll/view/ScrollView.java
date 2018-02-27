@@ -51,7 +51,7 @@ public class ScrollView extends View {
                 mScroller.startScroll(group.getScrollX(),
                         group.getScrollY(),
                         -group.getScrollX(),
-                        -group.getScrollY(), 10000);
+                        -group.getScrollY(), 1000);
                 invalidate();
                 break;
             case MotionEvent.ACTION_MOVE:

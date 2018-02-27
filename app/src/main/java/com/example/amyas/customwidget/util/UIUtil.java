@@ -1,10 +1,15 @@
 package com.example.amyas.customwidget.util;
 
+import android.content.Context;
 import android.support.design.widget.Snackbar;
+import android.view.Gravity;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.amyas.customwidget.R;
+
+import java.lang.ref.WeakReference;
 
 /**
  * author: Amyas
@@ -12,6 +17,22 @@ import com.example.amyas.customwidget.R;
  */
 
 public class UIUtil {
+
+    private static Toast toast;
+    private static WeakReference<Context> sContextWeakReference;
+
+    public static void showToast(Context context, String content){
+        sContextWeakReference = new WeakReference<>(context);
+        if (toast==null){
+            toast = Toast.makeText(sContextWeakReference.get(), content, Toast.LENGTH_SHORT);
+            toast.setGravity(Gravity.CENTER, 0, 0);
+
+        }else {
+            toast.setText(content);
+        }
+        toast.show();
+
+    }
     /**
      *  短时间 SnackBar
      * @param view 绑定的view
