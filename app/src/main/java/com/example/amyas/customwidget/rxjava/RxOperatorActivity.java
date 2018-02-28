@@ -10,7 +10,9 @@ import android.widget.Button;
 
 import com.example.amyas.customwidget.R;
 import com.example.amyas.customwidget.util.RxUtil;
+import com.example.amyas.customwidget.util.UIUtil;
 
+import java.sql.Time;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
@@ -351,8 +353,8 @@ public class RxOperatorActivity extends AppCompatActivity {
         mCompositeDisposable.add(repeatUntil);
     }
 
-    /**
-     * 开始倒计时60秒
+    /** interval 间隔时间持续发送心跳
+     *  倒计时60秒
      */
     @OnClick(R.id.button14)
     public void onMButton14Clicked() {
@@ -452,8 +454,36 @@ public class RxOperatorActivity extends AppCompatActivity {
 
     }
 
+    /**
+     * 函数转为发射源
+     */
     @OnClick(R.id.button18)
     public void onMButton18Clicked() {
+        Observable.just(fooAction(10))
+                .compose(RxUtil.workIoObMain())
+                .subscribe(integer -> UIUtil.showToast(
+                        RxOperatorActivity.this,"received sum of fooAction"));
+    }
+
+    /**
+     * 无意义的类
+     * @param i no sense num
+     * @return
+     */
+    private int fooAction(int i){
+        int sum = 0;
+        for (int j = 0; j < i; j++) {
+            for (int k = j+1; k < i; k++) {
+                int tmp = j+k;
+                sum+=tmp;
+            }
+        }
+        try {
+            Thread.sleep(3000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        return sum;
     }
 
     @OnClick(R.id.button19)

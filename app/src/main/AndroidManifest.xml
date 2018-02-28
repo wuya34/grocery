@@ -36,7 +36,7 @@
             android:process=":remote"/>
 
         <activity
-            android:name=".result.FirstActivity"
+            android:name=".rxjava.RxOperatorActivity"
             android:clearTaskOnLaunch="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
@@ -45,7 +45,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".activity.AnimateActivity"/>
-        <activity android:name=".rxjava.RxOperatorActivity"/>
+        <!--<activity android:name=".rxjava.RxOperatorActivity"/>-->
         <activity android:name=".rxjava.LeakActivity"/>
         <activity android:name=".rxjava.BlankActivity"/>
         <activity android:name=".activity.Main4Activity">
@@ -74,7 +74,7 @@
         </activity>
          <activity android:name=".debug.WebViewTestActivity">
          </activity>
-        <!--<activity android:name=".result.FirstActivity"/>-->
+        <activity android:name=".result.FirstActivity"/>
         <activity android:name=".result.SecondActivity"/>
         <activity android:name=".widget.WidgetActivity">
         </activity>
