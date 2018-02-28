@@ -24,10 +24,10 @@ import io.reactivex.ObservableOnSubscribe;
 import io.reactivex.ObservableSource;
 import io.reactivex.Observer;
 import io.reactivex.Single;
-import io.reactivex.SingleOnSubscribe;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.disposables.Disposable;
+import io.reactivex.functions.Action;
 import io.reactivex.schedulers.Schedulers;
 
 /**
@@ -110,18 +110,38 @@ public class RxOperatorActivity extends AppCompatActivity {
      */
     @OnClick(R.id.button)
     public void onMButtonClicked() {
-        Disposable forEach = Observable
+        Observable
                 .create((ObservableOnSubscribe<String>) e -> {
                     e.onNext("1");
                     e.onNext("2");
-                    Thread.sleep(1000);
-                    e.onNext("3");
+                    e.onError(new Throwable("planning error"));
+                    e.onComplete();
                 })
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .forEach(s -> Log.e(TAG, "accept: " + s));
+                .compose(RxUtil.workIoObMain())
+                .doFinally( () -> Log.d(TAG, "onMButtonClicked: doFinally"))
+                .doAfterTerminate(() -> Log.d(TAG, "onMButtonClicked: doAfterTerminate"))
+                .subscribe(new Observer<String>() {
+                    @Override
+                    public void onSubscribe(Disposable d) {
+                        mCompositeDisposable.add(d);
+                    }
 
-        mCompositeDisposable.add(forEach);
+                    @Override
+                    public void onNext(String s) {
+                        Log.d(TAG, "onNext: it's correct");
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+                        Log.e(TAG, "onNext: it's correct", e);
+                    }
+
+                    @Override
+                    public void onComplete() {
+                        Log.d(TAG, "onComplete: it's complete whatever correct or error");
+                    }
+                });
+
     }
 
     @OnClick(R.id.button2)
@@ -129,7 +149,7 @@ public class RxOperatorActivity extends AppCompatActivity {
         Disposable skipWhile = Observable
                 .just("1", "2", "3")
                 .skipWhile(s -> s.equals("1"))
-                .subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread())
+                .compose(RxUtil.workIoObMain())
                 .subscribe(s -> Log.e(TAG, "accept: " + s));
         mCompositeDisposable.add(skipWhile);
 
@@ -137,14 +157,16 @@ public class RxOperatorActivity extends AppCompatActivity {
 
     @OnClick(R.id.button3)
     public void onMButton3Clicked() {
-        Disposable single = Single
-                .create((SingleOnSubscribe<String>) e -> {
+        Single<String> single = Single
+                .create(e -> {
                     e.onSuccess("sss");
                     e.onSuccess("as");
-                })
+                });
+        Disposable disposable = single
                 .subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread())
                 .subscribe(s -> Log.e(TAG, "accept: " + s));
-        mCompositeDisposable.add(single);
+
+        mCompositeDisposable.add(disposable);
 
 
     }
@@ -329,15 +351,46 @@ public class RxOperatorActivity extends AppCompatActivity {
         mCompositeDisposable.add(repeatUntil);
     }
 
+    /**
+     * 开始倒计时60秒
+     */
     @OnClick(R.id.button14)
     public void onMButton14Clicked() {
-        Disposable interval = Observable.interval(1, TimeUnit.SECONDS, Schedulers.io())
-                .subscribeOn(Schedulers.io())
+        int countDownSec = 60;
+        Observable.interval(1,1, TimeUnit.SECONDS)
+                .take(60)
+                .doOnSubscribe(disposable -> {
+                    mCompositeDisposable.add(disposable);
+                    mButton14.setEnabled(false);
+                })
+                .map(aLong -> {
+                    int i = (int) (countDownSec - aLong -1);
+                    return String.valueOf(i);
+                })
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(aLong -> Log.e(TAG, "onMButton14Clicked: accept->" + aLong));
-        mCompositeDisposable.add(interval);
-    }
+                .subscribe(new Observer<String>() {
+                    @Override
+                    public void onSubscribe(Disposable d) {
+                        mCompositeDisposable.add(d);
+                    }
 
+                    @Override
+                    public void onNext(String s) {
+                        mButton14.setText(s);
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+                        Log.e("startCountDown", "onError: " + e);
+                    }
+
+                    @Override
+                    public void onComplete() {
+                        mButton14.setText("获取验证码");
+                        mButton14.setEnabled(true);
+                    }
+                });
+    }
 
     @OnClick(R.id.button15)
     public void onMButton15Clicked() {
@@ -386,15 +439,15 @@ public class RxOperatorActivity extends AppCompatActivity {
         Observable
                 .create(e -> {
                     Log.e(TAG, "onMButton17Clicked: looper -> " +
-                    Thread.currentThread().getName());
+                            Thread.currentThread().getName());
                     e.onNext("1");
                     e.onNext("2");
                 })
                 .compose(RxUtil.workIoObMain())
                 .subscribe(s -> {
-                    Log.e(TAG, "onMButton17Clicked: looper ->"+
+                    Log.e(TAG, "onMButton17Clicked: looper ->" +
                             Thread.currentThread().getName());
-                    Log.e(TAG, "onMButton17Clicked: accept "+s );
+                    Log.e(TAG, "onMButton17Clicked: accept " + s);
                 });
 
     }
