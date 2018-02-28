@@ -1,4 +1,4 @@
-package com.example.amyas.customwidget.rxjava;
+package com.example.amyas.customwidget.async.rxjava;
 
 import android.os.Build;
 import android.os.Bundle;
@@ -12,7 +12,6 @@ import com.example.amyas.customwidget.R;
 import com.example.amyas.customwidget.util.RxUtil;
 import com.example.amyas.customwidget.util.UIUtil;
 
-import java.sql.Time;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
@@ -29,7 +28,6 @@ import io.reactivex.Single;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.disposables.Disposable;
-import io.reactivex.functions.Action;
 import io.reactivex.schedulers.Schedulers;
 
 /**

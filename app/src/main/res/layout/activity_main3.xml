@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="horizontal"
-    tools:context="com.example.amyas.customwidget.rxjava.RxOperatorActivity">
+    tools:context="com.example.amyas.customwidget.async.rxjava.RxOperatorActivity">
     <LinearLayout
         android:orientation="vertical"
         android:layout_weight="1"

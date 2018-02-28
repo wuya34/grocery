@@ -1,4 +1,4 @@
-package com.example.amyas.customwidget.rxjava;
+package com.example.amyas.customwidget.async.rxjava;
 
 import android.view.View;
 
