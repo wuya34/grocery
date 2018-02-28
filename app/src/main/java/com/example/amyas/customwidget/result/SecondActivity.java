@@ -1,5 +1,6 @@
 package com.example.amyas.customwidget.result;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -8,6 +9,9 @@ import android.util.Log;
 
 import com.example.amyas.customwidget.R;
 import com.example.amyas.customwidget.util.ActivityUtil;
+
+import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 /**
  * Created by Administrator on 2018/2/7/007.
@@ -21,6 +25,7 @@ public class SecondActivity extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_result_test);
+        ButterKnife.bind(this);
         ActivityUtil.addFragmentToActivity(getSupportFragmentManager(),
                 new SecondFragment(), R.id.fragment_container);
     }
@@ -29,5 +34,12 @@ public class SecondActivity extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         Log.e(TAG, "onActivityResult: requestCode ->" + requestCode + " resultCode ->" +
                 resultCode);
+    }
+
+
+    @OnClick(R.id.button24)
+    public void onViewClicked() {
+        setResult(Activity.RESULT_OK);
+        onBackPressed();
     }
 }
