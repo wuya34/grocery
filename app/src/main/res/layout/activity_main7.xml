@@ -7,7 +7,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:animateLayoutChanges="true"
-    tools:context="com.example.amyas.customwidget.activity.Main7Activity">
+    tools:context="com.example.amyas.grocery.activity.Main7Activity">
     <!--<com.example.amyas.customwidget.paint.CirclePhoto-->
         <!--android:layout_width="wrap_content"-->
         <!--android:layout_height="wrap_content"/>-->

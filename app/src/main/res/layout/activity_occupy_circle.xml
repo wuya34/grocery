@@ -5,9 +5,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.amyas.customwidget.widget.WidgetActivity">
+    tools:context="com.example.amyas.grocery.widget.WidgetActivity">
 
-    <com.example.amyas.customwidget.widget.SingleOccupyCircleView
+    <com.example.amyas.grocery.widget.SingleOccupyCircleView
         android:id="@+id/single"
         android:layout_width="100dp"
         android:layout_height="100dp"
@@ -20,7 +20,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/task"/>
 
-    <com.example.amyas.customwidget.widget.TaskOccupyCircleView
+    <com.example.amyas.grocery.widget.TaskOccupyCircleView
         android:id="@+id/task"
         android:layout_width="100dp"
         android:layout_height="100dp"

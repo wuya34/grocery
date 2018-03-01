@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="com.example.amyas.customwidget.calendar.CalendarActivity">
+    tools:context="com.example.amyas.grocery.calendar.CalendarActivity">
     <com.prolificinteractive.materialcalendarview.MaterialCalendarView
         android:id="@+id/material"
         android:layout_width="match_parent"

@@ -5,8 +5,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.amyas.customwidget.activity.Main6Activity">
-    <com.example.amyas.customwidget.paint.XfermodeView
+    tools:context="com.example.amyas.grocery.activity.Main6Activity">
+    <com.example.amyas.grocery.paint.XfermodeView
         android:layout_width="400dp"
         android:layout_height="400dp"/>
 

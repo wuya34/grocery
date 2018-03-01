@@ -6,9 +6,9 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="com.example.amyas.customwidget.activity.Main2Activity">
+    tools:context="com.example.amyas.grocery.activity.Main2Activity">
 
-    <com.example.amyas.customwidget.scroll.view.ScrollView
+    <com.example.amyas.grocery.scroll.view.ScrollView
     android:layout_width="match_parent"
     android:layout_height="200dp"
     android:text="Hello World!"/>

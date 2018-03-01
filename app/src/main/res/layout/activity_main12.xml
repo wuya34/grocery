@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.amyas.customwidget.gallery.Main12Activity">
+    tools:context="com.example.amyas.grocery.gallery.Main12Activity">
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/recycler_view"
