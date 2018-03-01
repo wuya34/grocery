@@ -118,7 +118,7 @@ public class RxOperatorActivity extends AppCompatActivity {
                     e.onComplete();
                 })
                 .compose(RxUtil.workIoObMain())
-                .doFinally( () -> Log.d(TAG, "onMButtonClicked: doFinally"))
+                .doFinally(() -> Log.d(TAG, "onMButtonClicked: doFinally"))
                 .doAfterTerminate(() -> Log.d(TAG, "onMButtonClicked: doAfterTerminate"))
                 .subscribe(new Observer<String>() {
                     @Override
@@ -351,20 +351,21 @@ public class RxOperatorActivity extends AppCompatActivity {
         mCompositeDisposable.add(repeatUntil);
     }
 
-    /** interval 间隔时间持续发送心跳
-     *  倒计时60秒
+    /**
+     * interval 间隔时间持续发送心跳
+     * 倒计时60秒
      */
     @OnClick(R.id.button14)
     public void onMButton14Clicked() {
         int countDownSec = 60;
-        Observable.interval(1,1, TimeUnit.SECONDS)
+        Observable.interval(1, 1, TimeUnit.SECONDS)
                 .take(60)
                 .doOnSubscribe(disposable -> {
                     mCompositeDisposable.add(disposable);
                     mButton14.setEnabled(false);
                 })
                 .map(aLong -> {
-                    int i = (int) (countDownSec - aLong -1);
+                    int i = (int) (countDownSec - aLong - 1);
                     return String.valueOf(i);
                 })
                 .observeOn(AndroidSchedulers.mainThread())
@@ -460,20 +461,21 @@ public class RxOperatorActivity extends AppCompatActivity {
         Observable.just(fooAction(10))
                 .compose(RxUtil.workIoObMain())
                 .subscribe(integer -> UIUtil.showToast(
-                        RxOperatorActivity.this,"received sum of fooAction"));
+                        RxOperatorActivity.this, "received sum of fooAction"));
     }
 
     /**
      * 无意义的类
+     *
      * @param i no sense num
      * @return
      */
-    private int fooAction(int i){
+    private int fooAction(int i) {
         int sum = 0;
         for (int j = 0; j < i; j++) {
-            for (int k = j+1; k < i; k++) {
-                int tmp = j+k;
-                sum+=tmp;
+            for (int k = j + 1; k < i; k++) {
+                int tmp = j + k;
+                sum += tmp;
             }
         }
         try {
@@ -486,9 +488,54 @@ public class RxOperatorActivity extends AppCompatActivity {
 
     @OnClick(R.id.button19)
     public void onMButton19Clicked() {
+        Observable.create((ObservableOnSubscribe<String>) e -> {
+            e.onNext("1");
+            e.onNext("2");
+            e.onError(new Throwable("planning error"));
+            e.onNext("1");
+            e.onNext("2");
+        })
+                .subscribeOn(Schedulers.io()).
+                onErrorReturn(throwable -> "1111")
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Observer<String>() {
+                    @Override
+                    public void onSubscribe(Disposable d) {
+                        mCompositeDisposable.add(d);
+                    }
+
+                    @Override
+                    public void onNext(String s) {
+                        Log.d(TAG, "onNext: " + s);
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+                        Log.e(TAG, "onError: " + e);
+                    }
+
+                    @Override
+                    public void onComplete() {
+                        Log.d(TAG, "onComplete: ");
+                    }
+                });
     }
 
     @OnClick(R.id.button20)
     public void onMButton20Clicked() {
+        Observable.create((ObservableOnSubscribe<String>) e -> {
+            e.onNext("1");
+            e.onNext("2");
+            e.onError(new Throwable("planning error"));
+            e.onNext("1");
+            e.onNext("2");
+        })
+                .subscribeOn(Schedulers.io())
+                .onErrorResumeNext(throwable -> {
+                    return Observable.just("1111", "2222");
+                })
+                .subscribeOn(AndroidSchedulers.mainThread())
+                .subscribe(s -> Log.d(TAG, "onNext: " + s),
+                        throwable -> Log.e(TAG, "onError: " + throwable));
     }
 }

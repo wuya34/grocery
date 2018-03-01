@@ -36,7 +36,7 @@
             android:process=":remote"/>
 
         <activity
-            android:name="com.example.amyas.grocery.async.rxjava.RxOperatorActivity"
+            android:name=".async.rxjava.BlankActivity"
             android:clearTaskOnLaunch="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
@@ -45,9 +45,9 @@
             </intent-filter>
         </activity>
         <activity android:name="com.example.amyas.grocery.activity.AnimateActivity"/>
-        <!--<activity android:name=".rxjava.RxOperatorActivity"/>-->
+        <activity android:name="async.rxjava.RxOperatorActivity"/>
         <activity android:name="com.example.amyas.grocery.async.rxjava.LeakActivity"/>
-        <activity android:name="com.example.amyas.grocery.async.rxjava.BlankActivity"/>
+        <!--<activity android:name="com.example.amyas.grocery.async.rxjava.BlankActivity"/>-->
         <activity android:name="com.example.amyas.grocery.activity.Main4Activity">
         </activity>
         <activity android:name="com.example.amyas.grocery.activity.Main5Activity">
