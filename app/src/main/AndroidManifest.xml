@@ -36,7 +36,7 @@
             android:process=":remote"/>
 
         <activity
-            android:name=".activity.Main7Activity"
+            android:name=".animator.FrameAnim"
             android:clearTaskOnLaunch="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
@@ -54,8 +54,8 @@
         </activity>
         <activity android:name=".activity.Main6Activity">
         </activity>
-        <!--<activity android:name=".activity.Main7Activity">-->
-        <!--</activity>-->
+        <activity android:name=".activity.Main7Activity">
+        </activity>
         <activity android:name=".animator.Main8Activity">
         </activity>
         <activity android:name=".activity.Main9Activity">

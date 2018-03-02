@@ -13,6 +13,7 @@ public class ActivityUtil {
 
     public static void addFragmentToActivity(FragmentManager manager, Fragment fragment, int resId){
         FragmentTransaction t = manager.beginTransaction();
+        t.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
         t.replace(resId, fragment);
         t.commit();
     }

@@ -10,7 +10,14 @@
         android:id="@+id/button25"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Button"
+        android:text="start anim"
         tools:layout_editor_absoluteX="108dp"
         tools:layout_editor_absoluteY="129dp"/>
+
+    <TextView
+        android:id="@+id/canvas"
+        android:background="@color/white"
+        android:text="gradient"
+        android:layout_width="match_parent"
+        android:layout_height="300dp"/>
 </android.support.v7.widget.LinearLayoutCompat>
