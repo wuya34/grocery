@@ -24,6 +24,7 @@ import butterknife.Unbinder;
 import io.reactivex.Observer;
 import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.disposables.Disposable;
+import io.reactivex.observers.DisposableObserver;
 
 /**
  * author: Amyas
@@ -68,27 +69,44 @@ public class BlankActivity extends AppCompatActivity {
                 .map(new RxUtil.ServerResponseFunc<>())
                 .compose(RxUtil.workIoObMain())
                 .onErrorResumeNext(new RxUtil.HttpResponseFunc<>())
-                .subscribe(new Observer<List<LandResponse>>() {
-                    @Override
-                    public void onSubscribe(Disposable d) {
-                        mCompositeDisposable.add(d);
-                    }
-
+                .subscribeWith(new DisposableObserver<List<LandResponse>>() {
                     @Override
                     public void onNext(List<LandResponse> landResponses) {
-                        Log.d("11", "onNext: "+landResponses);
+
                     }
 
                     @Override
                     public void onError(Throwable e) {
-                        UIUtil.showToast(BlankActivity.this, e.getMessage());
+
                     }
 
                     @Override
                     public void onComplete() {
-                        Log.d("11", "onComplete: ");
+
                     }
                 });
+
+//        new Observer<List<LandResponse>>() {
+//            @Override
+//            public void onSubscribe(Disposable d) {
+//                mCompositeDisposable.add(d);
+//            }
+//
+//            @Override
+//            public void onNext(List<LandResponse> landResponses) {
+//                Log.d("11", "onNext: "+landResponses);
+//            }
+//
+//            @Override
+//            public void onError(Throwable e) {
+//                UIUtil.showToast(BlankActivity.this, e.getMessage());
+//            }
+//
+//            @Override
+//            public void onComplete() {
+//                Log.d("11", "onComplete: ");
+//            }
+//        }
 
     }
 

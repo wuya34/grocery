@@ -1,4 +1,4 @@
-package com.example.amyas.grocery.async.rxjava;
+package com.example.amyas.grocery.async.rxjava.exception;
 
 /**
  * author: Amyas

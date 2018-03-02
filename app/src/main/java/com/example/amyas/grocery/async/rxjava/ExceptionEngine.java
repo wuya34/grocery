@@ -1,6 +1,7 @@
 package com.example.amyas.grocery.async.rxjava;
 
 import com.example.amyas.grocery.async.rxjava.exception.ApiException;
+import com.example.amyas.grocery.async.rxjava.exception.Error;
 import com.example.amyas.grocery.async.rxjava.exception.ServerException;
 import com.google.gson.JsonParseException;
 

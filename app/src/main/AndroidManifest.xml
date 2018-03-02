@@ -19,7 +19,7 @@
     <uses-permission android:name="android.permission.INTERNET"/>
 
     <application
-        android:name="com.example.amyas.grocery.MyApplication"
+        android:name=".MyApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -36,7 +36,7 @@
             android:process=":remote"/>
 
         <activity
-            android:name=".async.rxjava.BlankActivity"
+            android:name=".activity.Main7Activity"
             android:clearTaskOnLaunch="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
@@ -44,43 +44,44 @@
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
-        <activity android:name="com.example.amyas.grocery.activity.AnimateActivity"/>
+        <activity android:name=".activity.AnimateActivity"/>
         <activity android:name="async.rxjava.RxOperatorActivity"/>
-        <activity android:name="com.example.amyas.grocery.async.rxjava.LeakActivity"/>
-        <!--<activity android:name="com.example.amyas.grocery.async.rxjava.BlankActivity"/>-->
-        <activity android:name="com.example.amyas.grocery.activity.Main4Activity">
+        <activity android:name=".async.rxjava.LeakActivity"/>
+        <activity android:name=".async.rxjava.BlankActivity"/>
+        <activity android:name=".activity.Main4Activity">
         </activity>
-        <activity android:name="com.example.amyas.grocery.activity.Main5Activity">
+        <activity android:name=".activity.Main5Activity">
         </activity>
-        <activity android:name="com.example.amyas.grocery.activity.Main6Activity">
+        <activity android:name=".activity.Main6Activity">
         </activity>
-        <activity android:name="com.example.amyas.grocery.activity.Main7Activity">
+        <!--<activity android:name=".activity.Main7Activity">-->
+        <!--</activity>-->
+        <activity android:name=".animator.Main8Activity">
         </activity>
-        <activity android:name="com.example.amyas.grocery.animator.Main8Activity">
+        <activity android:name=".activity.Main9Activity">
         </activity>
-        <activity android:name="com.example.amyas.grocery.activity.Main9Activity">
+        <activity android:name=".activity.Main10Activity">
         </activity>
-        <activity android:name="com.example.amyas.grocery.activity.Main10Activity">
+        <activity android:name=".thumbCache.Main11Activity">
         </activity>
-        <activity android:name="com.example.amyas.grocery.thumbCache.Main11Activity">
+        <activity android:name=".gallery.Main12Activity">
         </activity>
-        <activity android:name="com.example.amyas.grocery.gallery.Main12Activity">
+        <activity android:name=".paint.PaintActivity">
         </activity>
-        <activity android:name="com.example.amyas.grocery.paint.PaintActivity">
+        <activity android:name=".calendar.CalendarActivity">
         </activity>
-        <activity android:name="com.example.amyas.grocery.calendar.CalendarActivity">
+        <activity android:name=".viewstub.ViewStubActivity">
         </activity>
-        <activity android:name="com.example.amyas.grocery.viewstub.ViewStubActivity">
-        </activity>
-         <activity android:name="com.example.amyas.grocery.debug.WebViewTestActivity">
+         <activity android:name=".debug.WebViewTestActivity">
          </activity>
-        <activity android:name="com.example.amyas.grocery.result.FirstActivity"/>
-        <activity android:name="com.example.amyas.grocery.result.SecondActivity"/>
-        <activity android:name="com.example.amyas.grocery.widget.WidgetActivity">
+        <activity android:name=".result.FirstActivity"/>
+        <activity android:name=".result.SecondActivity"/>
+        <activity android:name=".widget.WidgetActivity">
         </activity>
-        <activity android:name="com.example.amyas.grocery.animator.PropertyAnimator"/>
-        <activity android:name="com.example.amyas.grocery.animator.SimpleAnimation"/>
-        <activity android:name="com.example.amyas.grocery.dispatch.TestDispatchActivity"/>
+        <activity android:name=".animator.PropertyAnimator"/>
+        <activity android:name=".animator.SimpleAnimation"/>
+        <activity android:name=".dispatch.TestDispatchActivity"/>
+        <!--<activity android:name=".animator.FrameAnim"/>-->
     </application>
 
 </manifest>

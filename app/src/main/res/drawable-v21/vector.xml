@@ -15,5 +15,15 @@
               tools:ignore="VectorRaster"/>
     </group>
 
+    <group android:name="test2"
+           android:pivotX="0"
+           android:pivotY="0"
+           android:rotation="0">
+        <path android:strokeColor="@android:color/holo_blue_light"
+              android:strokeWidth="2"
+              android:pathData="M 25 50,a 25,25 0 1,0 50,0"
+              tools:ignore="VectorRaster"/>
+    </group>
+
 
 </vector>
