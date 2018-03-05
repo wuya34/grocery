@@ -6,6 +6,7 @@ import android.widget.Button;
 import android.widget.Toast;
 
 import com.example.amyas.grocery.R;
+import com.example.amyas.grocery.util.ActivityUtil;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -22,6 +23,8 @@ public class WidgetActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_widget_1);
         ButterKnife.bind(this);
+        ActivityUtil.addFragmentToActivity(getSupportFragmentManager(),
+                new SingleOccupyCircleFragment(), R.id.fragment_container);
 
     }
 

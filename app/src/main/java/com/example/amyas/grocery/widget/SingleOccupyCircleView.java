@@ -1,5 +1,6 @@
 package com.example.amyas.grocery.widget;
 
+import android.animation.ValueAnimator;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -10,6 +11,7 @@ import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.View;
+import android.view.animation.AccelerateInterpolator;
 
 import com.example.amyas.grocery.R;
 
@@ -21,8 +23,9 @@ import com.example.amyas.grocery.R;
  */
 
 public class SingleOccupyCircleView extends View {
-    private int width;
-    private int height;
+    public static final String TAG = "SingleOccupyCircleView";
+    private int width = 80;
+    private int height = 80;
     // 放入的图片的左上角，在整个控件中的位置
     private int leftCornerX;
     private int leftCornerY;
@@ -36,7 +39,15 @@ public class SingleOccupyCircleView extends View {
     // 内层圆弧 定位矩形
     private RectF mRectF2;
     private int color;
-    private int mSweepAngle = 90;
+    private int valueEngine = 100;
+    private float mSweepAngle = 90;
+    // 初始的角度
+    private float startAngle = -90;
+    // 每帧的角度
+    private float frameAngle = 0;
+    private int count = 1;
+    private AccelerateInterpolator interpolator;
+    private Canvas canvas;
 
     public SingleOccupyCircleView(Context context) {
         super(context);
@@ -53,36 +64,46 @@ public class SingleOccupyCircleView extends View {
         initView();
     }
 
-    public void setArguments(Bitmap bitmap, int color, int sweepAngle) {
+    public void setArguments(Bitmap bitmap, int color, float sweepAngle) {
         if(bitmap!=null){
             mBitmap = bitmap;
         }
         mSweepAngle = sweepAngle;
+        frameAngle = mSweepAngle / valueEngine;
         this.color = color;
         postInvalidate();
     }
 
-
-
     private void initView() {
-
+        Log.d(TAG, "initView: count = "+(count++));
         mPaint = new Paint();
         mPaint.setAntiAlias(true);
         mPaint.setStyle(Paint.Style.STROKE);
         mBitmap = BitmapFactory.decodeResource(getResources(), R.mipmap.dog1);
+        interpolator = new AccelerateInterpolator();
 
     }
 
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
-        //        canvas.drawBitmap(mBitmap,width/2,height/2,mPaint);
+        Log.d(TAG, "onDraw: count = "+(count++));
         canvas.drawBitmap(mBitmap, leftCornerX, leftCornerY, mPaint);
         mPaint.setColor(color);
         mPaint.setStrokeWidth(bitmapWidth / 6);
-        canvas.drawArc(mRectF1, -90, mSweepAngle, false, mPaint);
 
-
+        ValueAnimator animator = ValueAnimator.ofInt(0, valueEngine);
+        animator.setDuration(500);
+        animator.setInterpolator(interpolator);
+        animator.addUpdateListener(animation -> {
+            int tmp = (int) animation.getAnimatedValue();
+            float progress = (float) tmp;
+            Log.d(TAG, "startAnim: progress = "+progress);
+            canvas.drawArc(mRectF1, startAngle,
+                    frameAngle * progress, false, mPaint);
+            postInvalidate();
+        });
+        animator.start();
     }
 
     @Override
@@ -90,7 +111,7 @@ public class SingleOccupyCircleView extends View {
         super.onMeasure(widthMeasureSpec, heightMeasureSpec);
         width = getMeasuredWidth();
         height = getMeasuredHeight();
-        Log.e("single", "onMeasure: (x,y) = (" + width + "," + height + ")");
+//        Log.e("single", "onMeasure: (x,y) = (" + width + "," + height + ")");
         initSize();
 
     }
@@ -99,7 +120,7 @@ public class SingleOccupyCircleView extends View {
         bitmapWidth = mBitmap.getWidth();
         leftCornerX = width / 2 - bitmapWidth / 2;
         leftCornerY = height / 2 - bitmapWidth / 2;
-        Log.e("single", "initSize: (leftCornerX,leftCornerY) = (" + leftCornerX + "," + leftCornerY + ")");
+//        Log.e("single", "initSize: (leftCornerX,leftCornerY) = (" + leftCornerX + "," + leftCornerY + ")");
         mRectF1 = new RectF(leftCornerX - bitmapWidth / 8 + offset, leftCornerY - bitmapWidth / 8 + offset,
                 leftCornerX + bitmapWidth * 9 / 8 - offset, leftCornerY + bitmapWidth * 9 / 8 - offset);
         //        mRectF2 = new RectF(-1,)

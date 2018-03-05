@@ -36,7 +36,7 @@
             android:process=":remote"/>
 
         <activity
-            android:name=".animator.FrameAnim"
+            android:name=".widget.WidgetActivity"
             android:clearTaskOnLaunch="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
@@ -48,12 +48,9 @@
         <activity android:name="async.rxjava.RxOperatorActivity"/>
         <activity android:name=".async.rxjava.LeakActivity"/>
         <activity android:name=".async.rxjava.BlankActivity"/>
-        <activity android:name=".activity.Main4Activity">
-        </activity>
-        <activity android:name=".activity.Main5Activity">
-        </activity>
-        <activity android:name=".activity.Main6Activity">
-        </activity>
+        <activity android:name=".activity.Main4Activity"/>
+        <activity android:name=".activity.Main5Activity"/>
+        <activity android:name=".activity.Main6Activity"/>
         <activity android:name=".activity.Main7Activity">
         </activity>
         <activity android:name=".animator.Main8Activity">
@@ -76,12 +73,11 @@
          </activity>
         <activity android:name=".result.FirstActivity"/>
         <activity android:name=".result.SecondActivity"/>
-        <activity android:name=".widget.WidgetActivity">
-        </activity>
+        <!--<activity android:name=".widget.WidgetActivity"/>-->
         <activity android:name=".animator.PropertyAnimator"/>
         <activity android:name=".animator.SimpleAnimation"/>
         <activity android:name=".dispatch.TestDispatchActivity"/>
-        <!--<activity android:name=".animator.FrameAnim"/>-->
+        <activity android:name=".animator.FrameAnim"/>
     </application>
 
 </manifest>
