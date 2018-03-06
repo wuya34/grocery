@@ -17,4 +17,17 @@
         <attr name="width" format="dimension"/>
         <attr name="height" format="dimension"/>
     </declare-styleable>
+
+    <declare-styleable name="RippleEffectView">
+        <attr name="ripple_width" format="dimension"/>
+        <attr name="ripple_color" format="color"/>
+        <attr name="ripple_count" format="integer"/>
+        <attr name="ripple_radius" format="integer"/>
+        <attr name="duration" format="integer"/>
+        <attr name="ripple_scale" format="float"/>
+        <attr name="ripple_type" format="enum">
+            <enum name="fill_type" value="0"/>
+            <enum name="stroke_type" value="1"/>
+        </attr>
+    </declare-styleable>
 </resources>

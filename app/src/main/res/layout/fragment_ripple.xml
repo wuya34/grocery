@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.example.amyas.grocery.widget.RippleEffectView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/ripple"
+
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:id="@+id/source"
+        android:layout_width="64dp"
+        android:src="@drawable/crop_wheat"
+        android:layout_centerInParent="true"
+        android:layout_height="64dp"/>
+
+</com.example.amyas.grocery.widget.RippleEffectView>

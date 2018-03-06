@@ -24,7 +24,7 @@ public class WidgetActivity extends AppCompatActivity {
         setContentView(R.layout.activity_widget_1);
         ButterKnife.bind(this);
         ActivityUtil.addFragmentToActivity(getSupportFragmentManager(),
-                new SingleOccupyCircleFragment(), R.id.fragment_container);
+                new RippleEffectFragment(), R.id.fragment_container);
 
     }
 
