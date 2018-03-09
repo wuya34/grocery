@@ -20,10 +20,17 @@ public class FirstActivity extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Log.e(TAG, "onCreate: FirstActivity");
         setContentView(R.layout.activity_result_test);
         fragment = new FirstFragment();
         ActivityUtil.addFragmentToActivity(getSupportFragmentManager(),
                 fragment, R.id.fragment_container);
+    }
+
+    @Override
+    protected void onNewIntent(Intent intent) {
+        super.onNewIntent(intent);
+        Log.e(TAG, "onNewIntent: FirstActivity" );
     }
 
     @Override
@@ -32,5 +39,17 @@ public class FirstActivity extends AppCompatActivity {
         Log.e(TAG, "onActivityResult: requestCode ->"+requestCode+" resultCode ->"+
         resultCode);
         fragment.onActivityResult(requestCode,resultCode,data);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        Log.e(TAG, "onResume: FirstActivity" );
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        Log.e(TAG, "onStart: FirstActivity");
     }
 }

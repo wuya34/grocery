@@ -491,12 +491,12 @@ public class RxOperatorActivity extends AppCompatActivity {
         Observable.create((ObservableOnSubscribe<String>) e -> {
             e.onNext("1");
             e.onNext("2");
-            e.onError(new Throwable("planning error"));
+//            e.onError(new Throwable("planning error"));
             e.onNext("1");
             e.onNext("2");
         })
-                .subscribeOn(Schedulers.io()).
-                onErrorReturn(throwable -> "1111")
+                .subscribeOn(Schedulers.io())
+                .onErrorReturn(throwable -> "1111")
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new Observer<String>() {
                     @Override
@@ -532,7 +532,7 @@ public class RxOperatorActivity extends AppCompatActivity {
         })
                 .subscribeOn(Schedulers.io())
                 .onErrorResumeNext(throwable -> {
-                    return Observable.just("1111", "2222");
+                    return Observable.error(new Throwable(throwable.getMessage()));
                 })
                 .subscribeOn(AndroidSchedulers.mainThread())
                 .subscribe(s -> Log.d(TAG, "onNext: " + s),

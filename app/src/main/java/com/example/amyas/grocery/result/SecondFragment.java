@@ -54,7 +54,8 @@ public class SecondFragment extends Fragment {
     @OnClick(R.id.set_result)
     public void onViewClicked() {
         getActivity().setResult(Activity.RESULT_OK);
-        getActivity().finish();
+        Intent intent = new Intent(getActivity(), FirstActivity.class);
+        startActivity(intent);
 
     }
 }
