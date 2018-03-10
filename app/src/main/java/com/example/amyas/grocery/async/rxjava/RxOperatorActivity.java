@@ -28,6 +28,8 @@ import io.reactivex.Single;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.disposables.Disposable;
+import io.reactivex.functions.Action;
+import io.reactivex.functions.Consumer;
 import io.reactivex.schedulers.Schedulers;
 
 /**
@@ -35,46 +37,8 @@ import io.reactivex.schedulers.Schedulers;
  */
 public class RxOperatorActivity extends AppCompatActivity {
     public static final String TAG = "RxOperatorActivity";
-    @BindView(R.id.button)
-    Button mButton;
-    @BindView(R.id.button2)
-    Button mButton2;
-    @BindView(R.id.button3)
-    Button mButton3;
-    @BindView(R.id.button4)
-    Button mButton4;
-    @BindView(R.id.button5)
-    Button mButton5;
-    @BindView(R.id.button6)
-    Button mButton6;
-    @BindView(R.id.button7)
-    Button mButton7;
-    @BindView(R.id.button8)
-    Button mButton8;
-    @BindView(R.id.button9)
-    Button mButton9;
-    @BindView(R.id.button10)
-    Button mButton10;
-    @BindView(R.id.button11)
-    Button mButton11;
-    @BindView(R.id.button12)
-    Button mButton12;
-    @BindView(R.id.button13)
-    Button mButton13;
     @BindView(R.id.button14)
     Button mButton14;
-    @BindView(R.id.button15)
-    Button mButton15;
-    @BindView(R.id.button16)
-    Button mButton16;
-    @BindView(R.id.button17)
-    Button mButton17;
-    @BindView(R.id.button18)
-    Button mButton18;
-    @BindView(R.id.button19)
-    Button mButton19;
-    @BindView(R.id.button20)
-    Button mButton20;
     private Unbinder unbinder;
     private CompositeDisposable mCompositeDisposable = new CompositeDisposable();
 
@@ -491,7 +455,7 @@ public class RxOperatorActivity extends AppCompatActivity {
         Observable.create((ObservableOnSubscribe<String>) e -> {
             e.onNext("1");
             e.onNext("2");
-//            e.onError(new Throwable("planning error"));
+            //            e.onError(new Throwable("planning error"));
             e.onNext("1");
             e.onNext("2");
         })
@@ -537,5 +501,14 @@ public class RxOperatorActivity extends AppCompatActivity {
                 .subscribeOn(AndroidSchedulers.mainThread())
                 .subscribe(s -> Log.d(TAG, "onNext: " + s),
                         throwable -> Log.e(TAG, "onError: " + throwable));
+    }
+
+    @OnClick(R.id.button21)
+    public void onViewClicked() {
+        Observable.just("1","2")
+                .compose(RxUtil.workIoObMain())
+                .compose(RxUtil.showProgressBar())
+                .doFinally(() -> Log.d(TAG, "run: stop again"))
+                .subscribe(s -> Log.d(TAG, "accept: "+s));
     }
 }

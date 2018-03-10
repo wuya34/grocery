@@ -65,26 +65,26 @@ public class BlankActivity extends AppCompatActivity {
 
     @OnClick(R.id.button22)
     public void onErrorHandlerClicked() {
-        RetrofitService.getInstance().mApi.getLandList(Api.token,null,1,10)
-                .map(new RxUtil.ServerResponseFunc<>())
-                .compose(RxUtil.workIoObMain())
-                .onErrorResumeNext(new RxUtil.HttpResponseFunc<>())
-                .subscribeWith(new DisposableObserver<List<LandResponse>>() {
-                    @Override
-                    public void onNext(List<LandResponse> landResponses) {
-
-                    }
-
-                    @Override
-                    public void onError(Throwable e) {
-
-                    }
-
-                    @Override
-                    public void onComplete() {
-
-                    }
-                });
+//        RetrofitService.getInstance().mApi.getLandList(Api.token,null,1,10)
+//                .map(new RxUtil.ServerResponseFunc<>())
+//                .compose(RxUtil.workIoObMain())
+//                .onErrorResumeNext(new RxUtil.HttpResponseFunc<>())
+//                .subscribeWith(new DisposableObserver<List<LandResponse>>() {
+//                    @Override
+//                    public void onNext(List<LandResponse> landResponses) {
+//
+//                    }
+//
+//                    @Override
+//                    public void onError(Throwable e) {
+//
+//                    }
+//
+//                    @Override
+//                    public void onComplete() {
+//
+//                    }
+//                });
 
 //        new Observer<List<LandResponse>>() {
 //            @Override

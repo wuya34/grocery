@@ -2,7 +2,6 @@ package com.example.amyas.grocery.retrofit;
 
 import android.util.Log;
 
-import com.example.amyas.grocery.async.rxjava.exception.ServerException;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 

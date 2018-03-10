@@ -1,17 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.v7.widget.LinearLayoutCompat
+<ScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="horizontal"
     tools:context="com.example.amyas.grocery.async.rxjava.RxOperatorActivity">
     <LinearLayout
         android:orientation="vertical"
-        android:layout_weight="1"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content">
+
         <Button
             android:id="@+id/button"
             android:layout_width="match_parent"
@@ -71,13 +70,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="defaultIfEmpty"/>
-    </LinearLayout>
 
-    <LinearLayout
-        android:orientation="vertical"
-        android:layout_width="match_parent"
-        android:layout_weight="1"
-        android:layout_height="match_parent">
         <Button
             android:id="@+id/button11"
             android:layout_width="match_parent"
@@ -137,10 +130,28 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="onErrorResumeNext"/>
+        <Button
+            android:id="@+id/button21"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="doOnFinally"/>
+
+        <!--<Button-->
+            <!--android:id="@+id/button22"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:text="onErrorResumeNext"/>-->
+        <!--<Button-->
+            <!--android:id="@+id/button23"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:text="onErrorResumeNext"/>-->
+
 
     </LinearLayout>
 
 
 
 
-</android.support.v7.widget.LinearLayoutCompat>
+
+</ScrollView>
