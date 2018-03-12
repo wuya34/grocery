@@ -34,9 +34,11 @@
             android:name="com.baidu.location.f"
             android:enabled="true"
             android:process=":remote"/>
+        <service android:name=".binder.ComputerService"
+            android:process=":remote"/>
 
         <activity
-            android:name=".async.rxjava.RxOperatorActivity"
+            android:name=".binder.BinderActivity"
             android:clearTaskOnLaunch="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
@@ -79,6 +81,7 @@
         <activity android:name=".dispatch.TestDispatchActivity"/>
         <activity android:name=".animator.FrameAnim"/>
         <activity android:name=".JNIActivity"/>
+        <!--<activity android:name=".binder.BinderActivity"/>-->
     </application>
 
 </manifest>
