@@ -38,7 +38,8 @@
             android:process=":remote"/>
 
         <activity
-            android:name=".binder.BinderActivity"
+            android:name=".result.FirstActivity"
+            android:launchMode="singleTask"
             android:clearTaskOnLaunch="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
@@ -73,7 +74,7 @@
         </activity>
          <activity android:name=".debug.WebViewTestActivity">
          </activity>
-        <activity android:name=".result.FirstActivity" android:launchMode="singleTask"/>
+        <!--<activity android:name=".result.FirstActivity" android:launchMode="singleTask"/>-->
         <activity android:name=".result.SecondActivity"/>
         <activity android:name=".widget.WidgetActivity"/>
         <activity android:name=".animator.PropertyAnimator"/>
@@ -81,7 +82,7 @@
         <activity android:name=".dispatch.TestDispatchActivity"/>
         <activity android:name=".animator.FrameAnim"/>
         <activity android:name=".JNIActivity"/>
-        <!--<activity android:name=".binder.BinderActivity"/>-->
+        <activity android:name=".binder.BinderActivity"/>
     </application>
 
 </manifest>

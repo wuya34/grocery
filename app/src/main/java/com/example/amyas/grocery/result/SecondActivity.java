@@ -3,6 +3,7 @@ package com.example.amyas.grocery.result;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Looper;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -28,6 +29,9 @@ public class SecondActivity extends AppCompatActivity {
         ButterKnife.bind(this);
         ActivityUtil.addFragmentToActivity(getSupportFragmentManager(),
                 new SecondFragment(), R.id.fragment_container);
+
+        String s = Looper.myLooper().toString();
+        Log.e(TAG, "onCreate: SecondActivity loop ->" + s );
     }
 
     @Override
@@ -40,6 +44,7 @@ public class SecondActivity extends AppCompatActivity {
     @OnClick(R.id.button24)
     public void onViewClicked() {
         setResult(Activity.RESULT_OK);
-        onBackPressed();
+        Intent intent = new Intent(this, FirstActivity.class);
+        startActivity(intent);
     }
 }
