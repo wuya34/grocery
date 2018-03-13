@@ -12,6 +12,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.widget.Button;
 import android.widget.Toast;
 
+import com.example.amyas.grocery.Person;
+import com.example.amyas.grocery.PersonAidl;
 import com.example.amyas.grocery.R;
 
 import butterknife.BindView;
@@ -29,12 +31,12 @@ public class BinderActivity extends AppCompatActivity {
     Button mOption;
     private boolean isBound;
     private Unbinder bind;
-    private IBinder mRemote = null;
+    private PersonAidl mPersonAidl;
 
     private ServiceConnection mConnection = new ServiceConnection() {
         @Override
         public void onServiceConnected(ComponentName name, IBinder service) {
-            mRemote = service;
+            mPersonAidl = PersonAidl.Stub.asInterface(service);
         }
 
         @Override
@@ -68,28 +70,22 @@ public class BinderActivity extends AppCompatActivity {
         }
     }
 
-    private String strcat(String x, String y) throws RemoteException {
-        Parcel data = Parcel.obtain();
-        Parcel reply = Parcel.obtain();
+    private String communicate(String s) throws RemoteException {
         String result;
-
-        try {
-            data.writeString(x);
-            data.writeString(y);
-            mRemote.transact(1, data, reply, 0);
-            result = reply.readString();
-        } finally {
-            data.recycle();
-            reply.recycle();
-        }
+        result = mPersonAidl.getInfo(s);
         return result;
 
+    }
+
+    private String sendPerson() throws RemoteException {
+        return mPersonAidl.sendPerson(new Person("amyas", 24));
     }
 
     @OnClick(R.id.option)
     public void onViewClicked() {
         try {
-            String result = strcat("am", "yas");
+//            String result = communicate("amyas");
+            String result = sendPerson();
             mOption.setText(result);
             Toast.makeText(this, result, Toast.LENGTH_LONG).show();
         } catch (RemoteException e) {
